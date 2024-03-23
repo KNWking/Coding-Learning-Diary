@@ -1,2 +1,4 @@
 # Coding-Learning-Diary
-Back up and record my code during the learning period.
+记录和备份学习编程时写的代码。代码质量一般，请轻喷。
+> 本人使用间隔重复系统来学习编程。如有需要，可以搜索本人的 **Markji** 牌组进行学习。搜索本人昵称 `KNWking` 或者搜索牌组前缀 `[Kk]` 均可。
+> > 注：电脑版只能搜索前缀 `[Kk]`。只有移动端可以通过搜索作者名 `KNWking`

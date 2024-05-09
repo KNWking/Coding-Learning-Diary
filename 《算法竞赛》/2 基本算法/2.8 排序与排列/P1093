@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// 自定义一个 student 类型，
+// 以便同时存储成绩和 ID。
+struct stu{
+    int id;
+    int c, m , e;
+    int sum;
+}st[310];
+// 注意这里数组名和 struct 名的不同。
+
+// 类型名为 stu.
+bool cmp(stu a, stu b){
+// 写一个 compare function.
+// 如果 a 应该在 b 前面，则返回 true,
+// 否则返回 false.
+    if(a.sum > b.sum) return true;
+// 实现 stu 的递减排序。a 应该在 b 前。
+    else if(b.sum > a.sum) return false;
+// a 应该在 b 后，返回 false.
+    else{
+        if(a.c > b.c) return true;
+        else if(b.c > a.c) return false;
+        else if(a.c == b.c){
+            if(a.id < b.id) return true;
+            else return false;
+        }
+    }
+}
+
+int n;
+
+int main(){
+    cin >> n;
+// 输入。
+    for(int i = 1; i <= n; ++i){
+        st[i].id = i;
+        cin >> st[i].c >> st[i].m >> st[i].e;
+        st[i].sum = st[i].c + st[i].m + st[i].e;
+    }
+// 比较。
+    sort(st + 1, st + n + 1, cmp);
+    // 第二个参数为 st + n + 1，
+    // 因为排序范围为 [left, right)。
+    // 第三个参数不需要加括号，
+    // 因为这里传递的是函数指针。
+    for(int i = 1; i <= 5; ++i)
+// 输出最高的五个。
+        cout << st[i].id << " " << st[i].sum << endl;
+    return 0;
+}

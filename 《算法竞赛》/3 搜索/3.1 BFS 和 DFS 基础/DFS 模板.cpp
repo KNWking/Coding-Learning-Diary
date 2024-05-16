@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 const int N = 1e5 + 10;
 
@@ -28,11 +28,13 @@ int dfn[N] = {0};
 int dfn_timer = 0;
 
 void dfn_order(int father){
-	dfn[father] = ++dfn_timer;
-	printf("dfn[%c] = %d;", tree[father].value, dfn[father]);
-	// 打印时间戳。
-	dfn_order(tree[father].lson);
-	dfn_order(tree[father].rson);
+	if(father != 0){
+		dfn[father] = ++dfn_timer;
+		printf("dfn[%c] = %d;", tree[father].value, dfn[father]);
+		// 打印时间戳。
+		dfn_order(tree[father].lson);
+		dfn_order(tree[father].rson);
+	}
 }
 
 int visit_timer = 0;

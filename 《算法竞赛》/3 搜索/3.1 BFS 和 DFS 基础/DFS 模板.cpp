@@ -73,6 +73,7 @@ int num_node(int father){
 	else{
 		num[father] = num_node(tree[father].lson)
 		+ num_node(tree[father].rson) + 1;
+		printf("num[%c] = %d;", tree[father].value, num[father]);
 		// 打印数量。
 		return num[father];
 	}
@@ -99,8 +100,8 @@ void inorder(int father){
 void postorder(int father){
 	// 求后序序列。
 	if(father != 0){
-		preorder(tree[father].lson);
-		preorder(tree[father].rson);
+		postorder(tree[father].lson);
+		postorder(tree[father].rson);
 		cout << tree[father].value << " ";
 	}
 }
@@ -112,7 +113,7 @@ int buildtree(){
 	int G = newNode('G'); int H = newNode('H'); int I = newNode('I');
 	insNode(E, B, 0); insNode(E, G, 1);
 	insNode(B, A, 0); insNode(B, D, 1);
-	insNode(G, F, 0); insNode(E, I, 1);
+	insNode(G, F, 0); insNode(G, I, 1);
 	insNode(D, C, 0); insNode(I, H, 0);
 	int root = E;
 	return root;

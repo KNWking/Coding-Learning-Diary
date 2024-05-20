@@ -19,7 +19,7 @@ int newNode(char val) {
     // 初始化时，lson & rson 都没有，
     // 所以 index 均为 0.
     return index++;
-    // 返回节点的 index.
+    // 返回当前节点的 index.
 }
 
 void insNode(int &father, int child, int l_r) {

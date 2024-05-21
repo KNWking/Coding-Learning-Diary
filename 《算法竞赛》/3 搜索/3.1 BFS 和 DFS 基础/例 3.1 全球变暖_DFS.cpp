@@ -15,7 +15,7 @@ void dfs(int x, int y){
        && mp[x + 1][y] == '#' && mp[x - 1][y] == '#')
         flag = 1; // 上下左右都是陆地，这是一个高地。
     for(int i = 0; i < 4; ++i){
-        int nx = x + d[i][0], ny = y + d[i][i];
+        int nx = x + d[i][0], ny = y + d[i][1];
         if(vis[nx][ny] == 0 && mp[nx][ny] == '#')
             dfs(nx, ny);
     }

@@ -35,6 +35,8 @@ void dfn_order (int father){
         dfn_order (tree[father].rson);
     }
 }
+// 基本原理就是像上面函数中的两次递归。
+// 下面函数也基本是这样的。
 
 int visit_timer = 0;
 

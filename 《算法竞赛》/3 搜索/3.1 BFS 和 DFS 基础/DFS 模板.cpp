@@ -25,8 +25,13 @@ void insNode(int &father, int child, int l_r){
 
 int dfn[N] = {0};  // dfn[i] 是结点 i 的时间戳。
 int dfn_timer = 0;
+// dfn 是 "Depth-First Numbering" 的缩写。
+
 
 void dfn_order (int father){
+    // 作用：为每个节点分配一个深度优先编号（DFN），
+    // 即在第一次访问到该节点时给它一个编号，并打印出来。
+    // 这个编号是按照DFS的顺序递增的。
     if(father != 0){
         dfn[father] = ++dfn_timer;
         printf("dfn[%c]=%d; ", tree[father].value, dfn[father]);
@@ -40,7 +45,9 @@ void dfn_order (int father){
 
 int visit_timer = 0;
 
-void visit_order (int father){  // 打印 DFS 序。
+void visit_order (int father){
+    // 打印DFS序列，记录每个节点被访问的顺序。
+    // 该函数在第一次访问节点时和在回溯到该节点时分别打印一次，这样每个节点会被打印两次。
     if(father != 0){
         printf("visit[%c]=%d; ", tree[father].value, ++visit_timer);
         // 打印 DFS 序：第 1 次访问结点。
@@ -55,6 +62,7 @@ int deep[N] = {0}; // deep[i] 是结点 i 的深度。
 int deep_timer = 0;
 
 void deep_node (int father){
+    // 计算并打印每个节点的深度。深度在第一次访问时增加，回溯时减少。
     // 这里参数是 father，否则根节点无法使用该函数。
     if(father != 0){
         deep[father] = ++deep_timer;  // 打印树的深度，第一次访问时，深度 +1.
@@ -68,17 +76,22 @@ void deep_node (int father){
 int num[N] = {0};  // num[i] 是以 i 为父亲的子树上的结点总数。
 
 int num_node (int father){
+    // 计算并打印以每个节点为根的子树的节点总数。
+    // 递归地计算左子树和右子树的节点数，并加上当前节点自身。
     if(father == 0)  return 0;
     else{
         num[father] = num_node (tree[father].lson)
-                    + num_node (tree[father].rson) + 1;
+                      + num_node (tree[father].rson) + 1;
         printf("num[%c]=%d; ", tree[father].value, num[father]);
         // 打印数量。
         return num[father];
     }
 }
 
-void preorder (int father){  // 求先序序列。
+void preorder (int father){
+    // 求先序序列。
+    // 先序遍历（Preorder Traversal）。
+    // 先访问根节点，然后递归访问左子树，最后递归访问右子树。
     if(father != 0){
         cout << tree[father].value << " ";
         // 先序输出。
@@ -87,7 +100,10 @@ void preorder (int father){  // 求先序序列。
     }
 }
 
-void inorder (int father){  // 求中序序列。
+void inorder (int father){
+    // 求中序序列。
+    // 中序遍历（Inorder Traversal）。
+    // 先递归访问左子树，然后访问根节点，最后递归访问右子树。
     if(father != 0){
         inorder (tree[father].lson);
         cout << tree[father].value << " ";
@@ -96,7 +112,10 @@ void inorder (int father){  // 求中序序列。
     }
 }
 
-void postorder (int father){  // 求后序序列。
+void postorder (int father){
+    // 求后序序列。
+    // 后序遍历（Postorder Traversal）。
+    // 先递归访问左子树，然后递归访问右子树，最后访问根节点。
     if(father != 0){
         postorder (tree[father].lson);
         postorder (tree[father].rson);

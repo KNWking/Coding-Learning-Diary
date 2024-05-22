@@ -29,9 +29,10 @@ int dfn_timer = 0;
 
 
 void dfn_order (int father){
-    // 作用：为每个节点分配一个深度优先编号（DFN），
+    // 作用：为每个节点分配一个深度优先编号 (DFN)，
     // 即在第一次访问到该节点时给它一个编号，并打印出来。
-    // 这个编号是按照DFS的顺序递增的。
+    // 这个编号是按照 DFS 的顺序递增的。
+    // 可以理解为节点第 1 次被访问的时间戳。
     if(father != 0){
         dfn[father] = ++dfn_timer;
         printf("dfn[%c]=%d; ", tree[father].value, dfn[father]);
@@ -46,7 +47,7 @@ void dfn_order (int father){
 int visit_timer = 0;
 
 void visit_order (int father){
-    // 打印DFS序列，记录每个节点被访问的顺序。
+    // 打印 DFS 序列，记录每个节点被访问的顺序。
     // 该函数在第一次访问节点时和在回溯到该节点时分别打印一次，这样每个节点会被打印两次。
     if(father != 0){
         printf("visit[%c]=%d; ", tree[father].value, ++visit_timer);
@@ -76,8 +77,8 @@ void deep_node (int father){
 int num[N] = {0};  // num[i] 是以 i 为父亲的子树上的结点总数。
 
 int num_node (int father){
-    // 计算并打印以每个节点为根的子树的节点总数。
-    // 递归地计算左子树和右子树的节点数，并加上当前节点自身。
+    // 计算并打印子树节点总数。
+    // 包括当前节点自身。
     if(father == 0)  return 0;
     else{
         num[father] = num_node (tree[father].lson)
@@ -90,7 +91,7 @@ int num_node (int father){
 
 void preorder (int father){
     // 求先序序列。
-    // 先序遍历（Preorder Traversal）。
+    // 先序遍历 (Preorder Traversal)。
     // 先访问根节点，然后递归访问左子树，最后递归访问右子树。
     if(father != 0){
         cout << tree[father].value << " ";
@@ -102,7 +103,7 @@ void preorder (int father){
 
 void inorder (int father){
     // 求中序序列。
-    // 中序遍历（Inorder Traversal）。
+    // 中序遍历 (Inorder Traversal)。
     // 先递归访问左子树，然后访问根节点，最后递归访问右子树。
     if(father != 0){
         inorder (tree[father].lson);
@@ -114,7 +115,7 @@ void inorder (int father){
 
 void postorder (int father){
     // 求后序序列。
-    // 后序遍历（Postorder Traversal）。
+    // 后序遍历 (Postorder Traversal)。
     // 先递归访问左子树，然后递归访问右子树，最后访问根节点。
     if(father != 0){
         postorder (tree[father].lson);

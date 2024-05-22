@@ -25,6 +25,7 @@ void insNode(int &father, int child, int l_r){
 
 int dfn[N] = {0};  // dfn[i] 是结点 i 的时间戳。
 int dfn_timer = 0;
+// dfn 是 "Depth-First Numbering" 的缩写，表示深度优先遍历编号。
 
 void dfn_order (int father){
     if(father != 0){

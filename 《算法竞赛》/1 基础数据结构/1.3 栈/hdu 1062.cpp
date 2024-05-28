@@ -17,6 +17,11 @@ int main(){
             putchar(c);
         }else s.push(c);
     }
+    while(!s.empty()){
+        // 增加鲁棒性，当最后一行文本没有换行就 EOF 了依然能 AC。
+        printf("%c", s.top());
+        s.pop();
+    }
     printf("\n");
     return 0;
 }

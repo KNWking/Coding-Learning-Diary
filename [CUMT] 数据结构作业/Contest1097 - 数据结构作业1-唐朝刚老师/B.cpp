@@ -1,31 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N= 1e4 + 10;
+const int N = 1e4 + 10;
 
-list<int> s;
+list<int> l;
+list<int>::iterator iter[N];
 
-int main() {
-    ios::sync_with_stdio(false);
-    int n = 0; cin >> n;
-    for(int i = 0; i < n; ++i){
+int n = 0, m = 0;
+
+int main(){
+    cin >> n;
+    for(int i = 1; i <= n; ++i){
         int tmp = 0; cin >> tmp;
-        s.push_back(tmp);
+        l.push_back(tmp);
+        iter[i] = prev(l.end());
     }
-
-    int k = 0; cin >> k;
-    for(int i = 0; i < k; ++i){
-        int pos = 0, data = 0; cin >> pos >> data;
-        auto iter = s.begin();
-        advance(iter, pos - 1);
-        s.insert(iter, data);
+    cin >> m;
+    for(int i = 0; i < m; ++i){
+        int pos = 0, val = 0;
+        cin >> pos >> val;
+        l.insert(iter[pos], val);
     }
-    for(auto iter = s.begin(); iter != s.end(); ++iter){
-        if(next(iter) != s.end())
-            cout << *iter << " ";
-        else
-            cout << *iter;
-    }
-    cout << endl;
+    for(auto it = l.begin(); it != l.end(); ++it)
+        cout << *it << (next(it) != l.end() ? ' ' : '\n');
     return 0;
 }

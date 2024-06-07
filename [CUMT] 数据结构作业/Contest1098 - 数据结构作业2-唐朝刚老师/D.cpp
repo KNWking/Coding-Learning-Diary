@@ -37,7 +37,7 @@ void postorder(int father){
 
 int main() {
     while(cin >> pres >> ins){
-        int idx = 1;
+        int idx = 1;  // 多组数据，所以每次要重新赋值!!!
         int root = buildTree(0, pres.size() - 1, 0, ins.size() - 1);
         postorder(root);
         cout << endl;

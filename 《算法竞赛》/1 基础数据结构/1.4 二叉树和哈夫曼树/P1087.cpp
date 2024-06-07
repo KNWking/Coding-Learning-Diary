@@ -27,7 +27,7 @@ int n;
 string s;
 
 int FBI(int sBeg, int sEnd);
-
+// 学完 DFS 再来看吧。
 void postorder(int father){
 	if(father != 0){
 		postorder(tree[father].lson);

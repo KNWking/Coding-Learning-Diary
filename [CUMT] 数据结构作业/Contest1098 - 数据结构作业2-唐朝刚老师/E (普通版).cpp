@@ -53,11 +53,13 @@ int buildTree(int inBeg, int inEnd, int postBeg, int postEnd){
     char rootVal = posts[postEnd];
     int root = newNode(rootVal);
     int inroot = 0;
-    for(inroot = inBeg; inroot <= inEnd; ++inroot)
+    for(inroot = inBeg; inroot <= inEnd; ++inroot)、
+        // 不能用 ins.find(rootVal) 替代，因为 inBeg 不定为 0.
         if(ins[inroot] == rootVal)
             break;
     int len = inroot - inBeg;
     int lson = buildTree(inBeg, inBeg + len - 1, postBeg, postBeg + len - 1);
+    // 注意参数如何定值。
     int rson = buildTree(inBeg + len + 1, inEnd, postBeg + len, postEnd - 1);
     insNode(root, lson, 0);
     insNode(root, rson, 1);

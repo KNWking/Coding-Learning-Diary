@@ -5,6 +5,9 @@ const int N = 1e4 + 10;
 
 list<int> l;
 list<int>::iterator iter[N];
+// 使用迭代器数组。
+// list 迭代器的一个特点是，插入/删除一个节点，
+// 原迭代器指向的结点不会变。
 
 int n = 0, m = 0;
 

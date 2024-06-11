@@ -21,6 +21,7 @@ int main(){
 		}
 		pq.push(num);  // 最后一个也要加入。
 		if(pq.size() == 1){ans = s.size();}
+		// 正确处理只有一个字符时的陷阱情况。
 		else{
 			while(pq.size() > 1){
 				int a = pq.top();

@@ -1,27 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 4e5 + 10;
-
-int n;
-int A[N];
-
-int main(){
-    cin >> n;
-    while(n--){
-        memset(A, 0, sizeof(A));
-        int num = 0; cin >> num;
-        int ans = 0;
-        for(int i = 2; i < num; ++i){
-            if(num % i == 0){
-                for(int j = i; j < num; j += i){
-                    A[j] = 1;
-                }
+int findf(int n) {
+    int res = n;
+    for(int i = 2; i * i <= n; ++i) {
+        if(n % i == 0) {
+            while(n % i == 0) {
+                n /= i;
             }
+            res -= res / i;
         }
-        for(int i = 1; i < num; ++i)
-            if(!A[i]) ++ans;
-        cout << ans << endl;
+    }
+    if(n > 1) {
+        res -= res / n;
+    }
+    return res;
+}
+
+int main() {
+    int cn = 0; cin >> cn;
+    vector<int> vec(cn);
+    for (int i = 0; i < cn; ++i) {
+        int n;
+        cin >> n;
+        cout << findf(n) << endl;
     }
     return 0;
 }

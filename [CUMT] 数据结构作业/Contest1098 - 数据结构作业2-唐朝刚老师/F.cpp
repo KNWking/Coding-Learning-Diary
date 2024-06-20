@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 1e2 + 10;
+const int N = 110;
 
 int d[4][2] = {{0, 1},{0, -1},
                {1, 0}, {-1, 0}};

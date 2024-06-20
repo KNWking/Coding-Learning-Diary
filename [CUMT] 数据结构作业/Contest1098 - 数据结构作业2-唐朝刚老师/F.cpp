@@ -19,17 +19,17 @@ int bfs();
 
 int main(){
     cin >> t;
-    for(int i = 0; i < t; ++i){
-        cin >> n >> m;
-        for(int j = 0; j < n; ++j){
-            for(int k = 0; k < m; ++k){
-                cin >> mp[j][k];
-                if(mp[j][k] == 'S'){
-                    sx = j;
-                    sy = k;
-                }else if(mp[j][k] == 'E'){
-                    ex = j;
-                    ey = k;
+    while(t--){
+		cin >> n >> m;
+        for(int i = 0; i < n; ++i){
+            for(int j = 0; j < m; ++j){
+                cin >> mp[i][j];
+                if(mp[i][j] == 'S'){
+                    sx = i;
+                    sy = j;
+                }else if(mp[i][j] == 'E'){
+                    ex = i;
+                    ey = j;
                 }
             }
         }
@@ -37,7 +37,7 @@ int main(){
         // 因为有多组数据，所以每次 bfs 完要重置 vis.
         int ans = bfs();
         cout << ans << endl;
-    }
+	}
     return 0;
 }
 

@@ -43,6 +43,7 @@ int main(){
 
 int bfs(){
     queue<tuple<int, int, int>> q; // x, y, distance.
+	// 也可以用 stuct{}; 代替。
     q.push({sx, sy, 0});
     vis[sx][sy] = true;
     while(!q.empty()){

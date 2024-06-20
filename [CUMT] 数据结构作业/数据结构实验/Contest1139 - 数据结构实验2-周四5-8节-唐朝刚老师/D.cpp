@@ -11,21 +11,23 @@ int main(){
     int count = 1;
     int i = 0, j = 0;
     int dire = 0;
+    // 因为走的顺序是右、下、左、上、右……，
+    // 是连续且重复的，因此用 dire 表示不同方位。
     while(count <= n * n){
         ans[i][j] = count++;
-        if(dire == 0){
+        if(dire == 0){  // 向右走。
             if(j + 1 >= n || ans[i][j + 1] != 0)
                 dire = 1;
         }
-        if(dire == 1){
+        if(dire == 1){  // 向下走。
             if (i + 1 >= n || ans[i + 1][j] != 0)
                 dire = 2;
         }
-        if(dire == 2){
+        if(dire == 2){  // 向左走
             if (j - 1 < 0 || ans[i][j - 1] != 0)
                 dire = 3;
         }
-        if(dire == 3){
+        if(dire == 3){  // 向上走。
             if (i - 1 < 0 || ans[i - 1][j] != 0)
                 dire = 0;
         }

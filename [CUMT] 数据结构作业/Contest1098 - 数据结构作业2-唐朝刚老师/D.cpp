@@ -55,6 +55,7 @@ int buildTree(int preBeg, int preEnd, int inBeg, int inEnd){
             break;
     int len = inroot - inBeg;
     int lson = buildTree(preBeg + 1, preBeg + len, inBeg, inBeg + len - 1);
+    // 注意这里的第二个参数，不是 preBeg + len - 1.
     int rson = buildTree(preBeg + len + 1, preEnd, inBeg + len + 1, inEnd);
     insNode(root, lson, 0);
     insNode(root, rson, 1);

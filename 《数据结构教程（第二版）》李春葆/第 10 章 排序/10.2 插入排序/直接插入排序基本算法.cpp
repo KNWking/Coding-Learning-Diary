@@ -5,7 +5,7 @@ using namespace std;
 
 vector<int> arr{9, 8, 7, 6, 5, 4, 3, 2, 1, 0};
 
-void strightSort() {
+void directSort() {
     for (int i = 1; i < arr.size(); ++i) {
         int key = arr[i];
         int j = i - 1;
@@ -19,7 +19,7 @@ void strightSort() {
 }
 
 int main() {
-    strightSort();
+    directSort();
     for (auto a: arr)
         cout << a << " ";
     return 0;

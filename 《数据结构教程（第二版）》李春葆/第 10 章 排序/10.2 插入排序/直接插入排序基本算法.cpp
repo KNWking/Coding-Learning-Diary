@@ -10,6 +10,8 @@ void directSort() {
         int key = arr[i];
         int j = i - 1;
         while (j >= 0 && arr[j] > key) {
+            // 从 j = i - 1 到 j = 0，
+            // 从右往左比较。
             arr[j + 1] = arr[j];
             j--;
         }

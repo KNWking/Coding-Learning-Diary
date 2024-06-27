@@ -17,8 +17,8 @@ void PreOrderTraverse(BiTree T, Status(*Visit)(TElemType)){
 /*操作结果：先序递归遍历r,对每个结点调用函数v131t一次且仅一次*/
 	if(T){  /*T不空*/
 		Visit(T->data);  /*先访问根结点*/
-		PreOrderTraverse(T->1 child,V1sit);  /"再先序遍历左子树*/
-		PreOrderTraverse(T->rchild,Visit);  /"最后先序遍历右子树*/
+		PreOrderTraverse(T->1 child,V1sit);  /*再先序遍历左子树*/
+		PreOrderTraverse(T->rchild,Visit);  /*最后先序遍历右子树*/
 	}
 }
 ```

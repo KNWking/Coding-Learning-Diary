@@ -1,28 +1,119 @@
 # 问题 A: 二叉链表存储的二叉树
 ## 题目描述
-给你若干个字符串，请编程输出每个字符串的子串个数。
+树形结构是一类重要的非线性数据结构，其中以树和二叉树最为常用。对于每一个结点至多只有两棵子树的一类树，称其为二叉树。二叉树的链式存储结构是一类重要的数据结构，其形式定义如下：
+
+```cpp
+typedef struct BiTNode{
+	TElemType data;
+	struct BiTNode *lchild, *rchi1d;  // 左右孩子指针
+}BiTNode, *BiTree;
+```
+
+而二叉树的前序、中序遍历是非常重要的能够访问二叉树所有结点的算法，下面分别列出一种先序遍历和两种中序遍历的算法。
+
+```cpp
+void PreOrderTraverse(BiTree T, Status(*Visit)(TElemType)){
+/*初始条件：二叉树r存在，131t是对结点操作的应用函数。算法6.1，有改动*/
+/*操作结果：先序递归遍历r,对每个结点调用函数v131t一次且仅一次*/
+	if(T){  /*T不空*/
+		Visit(T->data);  /*先访问根结点*/
+		PreOrderTraverse(T->1 child,V1sit);  /"再先序遍历左子树*/
+		PreOrderTraverse(T->rchild,Visit);  /"最后先序遍历右子树*/
+	}
+}
+```
+
+第一种中序遍历的方法（算法6.3）：
+
+```cpp
+Status InOrderTraversel(BiTree T, Status(*Visit)(TElemType)){
+/*采用二叉链表存储结构，V131t是对数据元素操作的应用函数。算法6.3*/
+/*中序遍历二叉树r的非递归算法（利用栈），对每个数据元素调用函数V131t*/
+	SqStack S;
+	InitStack(&S);
+	while(T || !StackEmpty(S)){
+		if(T){  /*根指针进栈，遍历左子树*/
+		Push(&S,T);
+		T=T->1child;
+	}e1se{/*根指针退栈，访问根结点，遍历右子树*/
+		Pop(&S, &T);
+		if(!visit(T -> data))
+		return ERROR;
+		T = T -> rchild;
+	}
+	printf ("\n");
+	return OK;
+}
+```
+
+第二种中序遍历的方法（算法6.2）：
+
+```cpp
+Status InorderTraverse2(BiTree T,Status(*Visit)(TElemType)){
+/*采用二叉链表存储结构，V131t是对数据元素操作的应用函数。算法6.2*/
+/*中序遍历二叉树r的非递归算法（利用栈），对每个数据元素调用函数v131t
+	SqStack S;
+	BiTree p;
+	InitStack(&S);
+	Push(&S,T);  /*根指针进栈*/
+	while(!StackEmpty(S)){
+		while(GetTop(S, &p) && sp)
+			Push(&S, p -> lchi1d);/向左走到尽头*/
+	Pop(&S, &p);  /*空指针退栈*/
+	if(!StackEmpty(s)){  /*访问结点，向右一步*/
+		Pop(&S,&p);
+		if(!Visit(p -> data)) return ERROR;
+		Push(&S, p -> rchild);
+	}
+	printf("\n");
+	return OK;
+}
+```
+
+通过读入一个字符串，建立二叉树的算法如下：
+
+```cpp
+void CreateBiTree(BiTree *T){
+/*算法6.4：按先序次序输入二叉树中结点的值（可为字符型或整型，在主程序*
+/*中定义），构造二叉链表表示的二叉树红。变量N11表示空（子）树。*/
+	TElemType ch;
+	scanf("%c", &ch);
+	if(ch == Nil){  /*空*/
+		*T = NULL;
+	}else{
+		*T = (BiTree)malloc(sizeof(BiTNode));
+		if(!*T) exit(OVERFLOW);
+		(*T) -> data = ch;/*生成根结点*/
+		CreateBiTree(s(*T) -> lchild);  /*构造左子树*/
+		CreateBiTree(&(*T) -> rchild);  /"构造右子树*/
+	}
+}
+```
+
+在本题中，将会给出一个按照先序遍历得出的字符串，空格代表空的子节点，大写字母代表节点内容。请通过这个字符串建立二叉树，并按照题目描述中的一种先序遍历和两种中序遍历的算法分别输出每一个非空节点。
 
 ## 输入
-若干个字符串，每个字符串占一行，字符串中不含空格，长度最大为 $1000$。
+输入只有一行，包含一个字符串 $S$ ，用来建立二叉树。保证 $S$ 为合法的二叉树先序遍历字符串，节点内容只有大写字母，且 $S$ 的长度不超过 $100$ 。
 
 ## 输出
-对应每一行的字符串，输出该字符串子串的个数。
+共有三行，每一行包含一串字符，表示分别按先序、中序、中序得出的节点内容，每个字母后输出一个空格。请注意行尾输出换行。
 
 ## 样例输入
 ```
-abc
-apple
-software
+ABC  DE G  F   
 
 ```
 
 ## 样例输出
 ```
-7
-16
-37
+A B C D E G F 
+C B E G D F A 
+C B E G D F A 
 
 ```
+
+##提示
+遍历是二叉树各种操作的基础，可以在遍历的过程中对节点进行各种操作。通过二叉树的遍历，可以建立二叉树。而先序、中序和后序遍历分别具有各自的特点，是探索二叉树性质的绝佳“武器”。
 
 ---
 # 问题 B: 哈夫曼树

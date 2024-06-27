@@ -58,7 +58,7 @@ Status InorderTraverse2(BiTree T,Status(*Visit)(TElemType)){
 	Push(&S,T);  /*根指针进栈*/
 	while(!StackEmpty(S)){
 		while(GetTop(S, &p) && sp)
-			Push(&S, p -> lchi1d);/向左走到尽头*/
+			Push(&S, p -> lchi1d);/*向左走到尽头*/
 	Pop(&S, &p);  /*空指针退栈*/
 	if(!StackEmpty(s)){  /*访问结点，向右一步*/
 		Pop(&S,&p);
@@ -85,7 +85,7 @@ void CreateBiTree(BiTree *T){
 		if(!*T) exit(OVERFLOW);
 		(*T) -> data = ch;/*生成根结点*/
 		CreateBiTree(s(*T) -> lchild);  /*构造左子树*/
-		CreateBiTree(&(*T) -> rchild);  /"构造右子树*/
+		CreateBiTree(&(*T) -> rchild);  /*构造右子树*/
 	}
 }
 ```

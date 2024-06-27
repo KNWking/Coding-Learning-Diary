@@ -12,8 +12,8 @@ void push(int x){
     // 上浮，插入新元素。
     heap[++len] = x;
     int i = len; // x 的索引。
-    while(i > 1 && heap[i] < heap[1 / 2]){
-        swap(heap[i], heap[1 / 2]);
+    while(i > 1 && heap[i] < heap[i / 2]){
+        swap(heap[i], heap[i / 2]);
         // x 的根节点和 x 互换。
         i = i / 2;
     }

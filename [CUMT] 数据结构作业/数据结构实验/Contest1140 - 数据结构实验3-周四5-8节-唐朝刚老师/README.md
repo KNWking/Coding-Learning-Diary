@@ -4,8 +4,8 @@
 
 ```cpp
 typedef struct BiTNode{
-	TElemType data;
-	struct BiTNode *lchild, *rchi1d;  // 左右孩子指针
+    TElemType data;
+    struct BiTNode *lchild, *rchi1d;  // 左右孩子指针
 }BiTNode, *BiTree;
 ```
 
@@ -15,11 +15,11 @@ typedef struct BiTNode{
 void PreOrderTraverse(BiTree T, Status(*Visit)(TElemType)){
 /*初始条件：二叉树r存在，131t是对结点操作的应用函数。算法6.1，有改动*/
 /*操作结果：先序递归遍历r,对每个结点调用函数v131t一次且仅一次*/
-	if(T){  /*T不空*/
-		Visit(T->data);  /*先访问根结点*/
-		PreOrderTraverse(T->1 child,V1sit);  /*再先序遍历左子树*/
-		PreOrderTraverse(T->rchild,Visit);  /*最后先序遍历右子树*/
-	}
+    if(T){  /*T不空*/
+    Visit(T->data);  /*先访问根结点*/
+        PreOrderTraverse(T->1 child,V1sit);  /*再先序遍历左子树*/
+        PreOrderTraverse(T->rchild,Visit);  /*最后先序遍历右子树*/
+    }
 }
 ```
 
@@ -29,20 +29,20 @@ void PreOrderTraverse(BiTree T, Status(*Visit)(TElemType)){
 Status InOrderTraversel(BiTree T, Status(*Visit)(TElemType)){
 /*采用二叉链表存储结构，V131t是对数据元素操作的应用函数。算法6.3*/
 /*中序遍历二叉树r的非递归算法（利用栈），对每个数据元素调用函数V131t*/
-	SqStack S;
-	InitStack(&S);
-	while(T || !StackEmpty(S)){
-		if(T){  /*根指针进栈，遍历左子树*/
-		Push(&S,T);
-		T=T->1child;
-	}e1se{/*根指针退栈，访问根结点，遍历右子树*/
-		Pop(&S, &T);
-		if(!visit(T -> data))
-		return ERROR;
-		T = T -> rchild;
-	}
-	printf ("\n");
-	return OK;
+    SqStack S;
+    InitStack(&S);
+    while(T || !StackEmpty(S)){
+        if(T){  /*根指针进栈，遍历左子树*/
+        Push(&S,T);
+        T=T->1child;
+    }e1se{/*根指针退栈，访问根结点，遍历右子树*/
+        Pop(&S, &T);
+        if(!visit(T -> data))
+        return ERROR;
+        T = T -> rchild;
+    }
+    printf ("\n");
+    return OK;
 }
 ```
 
@@ -52,21 +52,21 @@ Status InOrderTraversel(BiTree T, Status(*Visit)(TElemType)){
 Status InorderTraverse2(BiTree T,Status(*Visit)(TElemType)){
 /*采用二叉链表存储结构，V131t是对数据元素操作的应用函数。算法6.2*/
 /*中序遍历二叉树r的非递归算法（利用栈），对每个数据元素调用函数v131t
-	SqStack S;
-	BiTree p;
-	InitStack(&S);
-	Push(&S,T);  /*根指针进栈*/
-	while(!StackEmpty(S)){
-		while(GetTop(S, &p) && sp)
-			Push(&S, p -> lchi1d);/*向左走到尽头*/
-	Pop(&S, &p);  /*空指针退栈*/
-	if(!StackEmpty(s)){  /*访问结点，向右一步*/
-		Pop(&S,&p);
-		if(!Visit(p -> data)) return ERROR;
-		Push(&S, p -> rchild);
-	}
-	printf("\n");
-	return OK;
+    SqStack S;
+    BiTree p;
+    InitStack(&S);
+    Push(&S,T);  /*根指针进栈*/
+    while(!StackEmpty(S)){
+        while(GetTop(S, &p) && sp)
+            Push(&S, p -> lchi1d);/*向左走到尽头*/
+    Pop(&S, &p);  /*空指针退栈*/
+    if(!StackEmpty(s)){  /*访问结点，向右一步*/
+        Pop(&S,&p);
+        if(!Visit(p -> data)) return ERROR;
+        Push(&S, p -> rchild);
+    }
+    printf("\n");
+    return OK;
 }
 ```
 
@@ -76,17 +76,17 @@ Status InorderTraverse2(BiTree T,Status(*Visit)(TElemType)){
 void CreateBiTree(BiTree *T){
 /*算法6.4：按先序次序输入二叉树中结点的值（可为字符型或整型，在主程序*
 /*中定义），构造二叉链表表示的二叉树红。变量N11表示空（子）树。*/
-	TElemType ch;
-	scanf("%c", &ch);
-	if(ch == Nil){  /*空*/
-		*T = NULL;
-	}else{
-		*T = (BiTree)malloc(sizeof(BiTNode));
-		if(!*T) exit(OVERFLOW);
-		(*T) -> data = ch;/*生成根结点*/
-		CreateBiTree(s(*T) -> lchild);  /*构造左子树*/
-		CreateBiTree(&(*T) -> rchild);  /*构造右子树*/
-	}
+    TElemType ch;
+    scanf("%c", &ch);
+    if(ch == Nil){  /*空*/
+        *T = NULL;
+    }else{
+        *T = (BiTree)malloc(sizeof(BiTNode));
+        if(!*T) exit(OVERFLOW);
+        (*T) -> data = ch;/*生成根结点*/
+        CreateBiTree(s(*T) -> lchild);  /*构造左子树*/
+        CreateBiTree(&(*T) -> rchild);  /*构造右子树*/
+    }
 }
 ```
 

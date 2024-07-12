@@ -45,6 +45,8 @@ IBFBBBFIBFIIIFF
 
 noip2004普及组第3题
 
+
+
 # [NOIP2001 普及组] 求先序排列
 
 ## 题目描述

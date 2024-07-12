@@ -1,7 +1,4 @@
-#include <cstdio>
-#include <iostream>
-#include <algorithm>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 
 priority_queue<int, vector<int>, greater<int>> pq;

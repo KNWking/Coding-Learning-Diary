@@ -25,19 +25,19 @@ int main() {
             }
         }
         if (num[l] != k) {
-            printf("-1 -1\n");
+            cout << "-1 -1\n";
         } else {
-            printf("%d ", l);
-            int l2 = 0, r2 = n - 1;
-            while (l2 < r2) {
-                int mid2 = (l2 + r2 + 1) >> 1;
-                if (num[mid2] <= k) {
-                    l2 = mid2;
+            cout << l << " ";
+            l = 0, r = n - 1;
+            while (l < r) {
+                int mid = (l + r + 1) >> 1;
+                if (num[mid] <= k) {
+                    l = mid;
                 } else {
-                    r2 = mid2 - 1;
+                    r = mid - 1;
                 }
             }
-            printf("%d\n", l2);
+            cout << r << endl;
         }
     }
     return 0;

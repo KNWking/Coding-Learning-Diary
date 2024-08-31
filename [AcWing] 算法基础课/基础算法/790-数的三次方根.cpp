@@ -2,7 +2,7 @@
 
 using namespace std;
 
-const double esp = 1e-8;
+const double eps = 1e-8;
 
 double n;
 
@@ -22,7 +22,7 @@ int main() {
             l = n;
         }
     }
-    while (fabs(l - r) > esp) {
+    while (fabs(l - r) > eps) {
         double mid = (l + r) / 2;
         if (mid * mid * mid > n) {
             r = mid;

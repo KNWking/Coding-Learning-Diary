@@ -11,7 +11,7 @@ vector<int> add(vector<int> &A, vector<int> &B) {
         C.push_back(t % 10); // 个位。
         t /= 10;  // 确定进位。
     }
-    if (t) C.push_back(t);
+    if (t) C.push_back(t);  // !!! 不要忘记最后一位进位 !!!
     return C;
 }
 

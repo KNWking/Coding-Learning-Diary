@@ -7,10 +7,11 @@ bool cmp(vector<int> &A, vector<int> &B) {
     if (A.size() > B.size()) return true;
     if (A.size() < B.size()) return false;
     for (int i = A.size() - 1; i >= 0; --i) {
+        // !!! 从最高位开始比较 !!!
         if (A[i] > B[i]) return true;
         if (A[i] < B[i]) return false;
     }
-    return true;
+    return true;  // A == B.
 }
 
 // 提前通过附加的 cmp() 函数保证 A >= B.
@@ -18,7 +19,7 @@ vector<int> sub(vector<int> &A, vector<int> &B) {
     vector<int> C;
     int t = 0;  // 进位。
 
-    // 已确定 A >= B.
+    // 已确定 A >= B, 所以 A.size() >= B.size().
     for (int i = 0; i < A.size(); ++i) {
         // 要先确定 B[i] 有没有越界。
         t = A[i] - t;
@@ -26,6 +27,7 @@ vector<int> sub(vector<int> &A, vector<int> &B) {
         if(t >= 0){
             C.push_back(t);
             t = 0;
+            // !!! 不只是 t < 0 时要重置进位 !!!
         }else{
             C.push_back(t + 10);
             t = 1;
@@ -48,7 +50,7 @@ int main() {
     for (int i = str2.size() - 1; i >= 0; --i) {
         B.push_back(str2[i] - '0');
     }
-    if (cmp(A, B)) {
+    if (cmp(A, B)) {  // !!! 要通过 cmp() 函数进行比较 !!!
         auto C = sub(A, B);
         for (int i = C.size() - 1; i >= 0; --i) {
             printf("%d", C[i]);

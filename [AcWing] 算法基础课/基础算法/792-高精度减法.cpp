@@ -6,6 +6,7 @@ using namespace std;
 bool cmp(vector<int> &A, vector<int> &B) {
     if (A.size() > B.size()) return true;
     if (A.size() < B.size()) return false;
+    // A.size() == B.size()
     for (int i = A.size() - 1; i >= 0; --i) {
         // !!! 从最高位开始比较 !!!
         if (A[i] > B[i]) return true;
@@ -23,18 +24,18 @@ vector<int> sub(vector<int> &A, vector<int> &B) {
     for (int i = 0; i < A.size(); ++i) {
         // 要先确定 B[i] 有没有越界。
         t = A[i] - t;
-        if(i < B.size()) t -= B[i];
-        if(t >= 0){
+        if (i < B.size()) t -= B[i];
+        if (t >= 0) {  // !!! 这里不是 t > 0 !!!
             C.push_back(t);
             t = 0;
             // !!! 不只是 t < 0 时要重置进位 !!!
-        }else{
+        } else {
             C.push_back(t + 10);
             t = 1;
         }
     }
     // 去掉多余的前导零。
-    while(C.size() > 1 && C.back() == 0){
+    while (C.size() > 1 && C.back() == 0) {
         C.pop_back();
     }
     return C;

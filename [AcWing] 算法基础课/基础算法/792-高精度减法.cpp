@@ -58,6 +58,7 @@ int main() {
         }
     } else {
         auto C = sub(B, A);
+        // 这里注意是 sub(B, A)，保持大数在前。
         printf("-");
         for (int i = C.size() - 1; i >= 0; --i) {
             printf("%d", C[i]);

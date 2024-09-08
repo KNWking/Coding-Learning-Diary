@@ -4,10 +4,12 @@ using namespace std;
 
 vector<int> mul(vector<int> &A, int &b) {
     vector<int> C;
-    int t = 0;
+    int t = 0;  // 进位。
+
+    // 这里并上 t 是为了处理乘法结束后的进位。
     for (int i = 0; i < A.size() || t; ++i) {
         if (i < A.size()) t += A[i] * b;
-        // 这里类似高精度加法。
+        // 下面类似高精度加法。
         C.push_back(t % 10);
         t /= 10;
     }
